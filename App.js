@@ -7,7 +7,7 @@ import AppStack from './navigation/AppStack';
 //enableScreens();
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return (
     <NavigationContainer>
