@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import SubmitButton from '../SubmitButton';
 import { useNavigation } from '@react-navigation/native';
-import { useInfo,signIn } from '../../context/InfoCenter';
+import { useInfo } from '../../context/InfoCenter';
+
 
 const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +27,7 @@ const SignInForm = () => {
     <View style={styles.form}>
       <Text style={styles.Headertxt}>Sign in</Text>
       <Text style={styles.label}>Email</Text>
-      <TextInput style={styles.emailInput} keyboardType="email-address" placeholder='Your Unique Email' />
+      <TextInput onChangeText={(text)=>setEmail(text)} style={styles.emailInput} keyboardType="email-address" placeholder='Your Unique Email' />
       <Text style={styles.label}>Password</Text>
       <View style={styles.passBox}>
         <TextInput
@@ -34,6 +35,7 @@ const SignInForm = () => {
           textContentType='password'
           secureTextEntry={!passwordVisible}
           placeholder="Password"
+          onChangeText={(text)=>setPassword(text)}
         />
         <Pressable onPress={togglePasswordVisibility} style={{ marginRight: "5%" }} >
           <AntDesign name={passwordVisible ? "eye" : "eyeo"} size={24} color="white" />

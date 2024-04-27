@@ -3,17 +3,33 @@ import {useState} from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import SubmitButton from '../SubmitButton';
 import { useNavigation } from '@react-navigation/native';
+import { useInfo } from '../../context/InfoCenter';
 
 const SignUpForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { signUp } = useInfo(); 
   const [passwordVisible, setPasswordVisible] = useState(false);
+
   const togglePasswordVisibility = () => {
+
     setPasswordVisible(!passwordVisible);
+
   };
+
   const navigation = useNavigation();
 
   const navToRegister = () => {
+
     navigation.navigate('Login');
+
   };
+
+  const signUserUp = () => {
+
+    signUp(email,password);
+
+  }
 
   return (
     <View style={styles.form}>
@@ -21,7 +37,7 @@ const SignUpForm = () => {
       <Text style={styles.label}>Username</Text>
       <TextInput style={styles.emailInput} placeholder='Your Unique Username' />
       <Text style={styles.label}>Email</Text>
-      <TextInput style={styles.emailInput} keyboardType="email-address" />
+      <TextInput onChangeText={(text)=>setEmail(text)} style={styles.emailInput} keyboardType="email-address" />
       <Text style={styles.label}>Password</Text>
       <View style={styles.passBox}>
         <TextInput
@@ -29,13 +45,14 @@ const SignUpForm = () => {
           textContentType='password'
           secureTextEntry={!passwordVisible}
           placeholder="Password"
+          onChangeText={(text)=>setPassword(text)}
         />
         <Pressable onPress={togglePasswordVisibility} style={{ marginRight: "5%" }} >
           <AntDesign name={passwordVisible ? "eye" : "eyeo"} size={24} color="white" />
         </Pressable>
       </View>
       <Text style={styles.ForgotTxt}>Forgot Password</Text>
-      <SubmitButton text="Log in" width="100%" height="10%" />
+      <SubmitButton onPress={signUserUp} text="Sign up" width="100%" height="10%" />
       <Pressable onPress={navToRegister} style={styles.switchLink}>
         <Text style={styles.txt1}>Already have an account?</Text>
         <Text style={styles.txt2}>Login</Text>
