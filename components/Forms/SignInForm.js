@@ -9,7 +9,7 @@ const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
-//  const { signIn } = useInfo(); 
+  const { signIn } = useInfo(); 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };

@@ -8,14 +8,19 @@ export const InfoProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const signIn = (email, password) => {
-    const auth = getAuth();
+    console.log("signing in")
+    setUser({
+      name:"Emmanuel Nyatepe",
+      role:"client"
+    })
+    {/*const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
       })
       .catch((error) => {
         console.error(error);
-      });
+      });*/}
   };
 
   const signUp = (email, password) => {
@@ -30,14 +35,16 @@ export const InfoProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    const auth = getAuth();
+    console.log('logging out')
+    setUser(null)
+    {/*const auth = getAuth();
     auth.signOut()
       .then(() => {
         setUser(null);
       })
       .catch((error) => {
         console.error(error);
-      });
+      });*/}
   };
 
   return (
