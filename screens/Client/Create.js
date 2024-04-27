@@ -5,12 +5,18 @@ import GetImage from "../../components/GetImage";
 import { launchImageLibraryAsync } from "expo-image-picker";
 import SubmitButton from "../../components/SubmitButton";
 import { db,collection,addDoc } from "../../Config/FireBase";
+import {useInfo} from '../../context/InfoCenter'
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [prompt, setPrompt] = useState("");
   const [videoURL, setVideoUrl] = useState();
   const [imgUrl, setImgUrl] = useState();
+  const {user}=useInfo()
+
+  useEffect(()=>{
+   console.log(user)
+  },[])
 
   const handleVideo = async () => {
     const videoPickerResult = await launchImageLibraryAsync({

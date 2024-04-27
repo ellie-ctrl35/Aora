@@ -1,12 +1,14 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import avatar from '../resources/avatar.png'
+import {useInfo} from '../context/InfoCenter'
 const UserInfo = () => {
+  const {user}=useInfo();
   return (
     <View style={styles.container}>
       <Image style={styles.avatar} resizeMode='contain' source={avatar}/>
       <Text style={styles.username}>
-        Emmanuel Nyatepe
+        {user.email}
       </Text>
       <View style={styles.numbers}>
         <View style={styles.figure}>

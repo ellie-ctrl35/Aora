@@ -6,7 +6,7 @@ import NoVids from '../../components/NoVids';
 import { useInfo } from '../../context/InfoCenter';
 
 const Profile = () => {
-  const {signOut}=useInfo(); 
+  const {signOut,user}=useInfo(); 
   
   return (
     <SafeAreaView style={styles.container}>
