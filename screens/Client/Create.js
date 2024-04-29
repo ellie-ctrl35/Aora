@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, Text, TextInput } from "react-native";
 import { useState } from "react";
-import GetVideo from "../../components/GetVideo";
-import GetImage from "../../components/GetImage";
+import GetVideo from "../../components/Utils/GetVideo";
+import GetImage from "../../components/Utils/GetImage";
 import { launchImageLibraryAsync } from "expo-image-picker";
 import SubmitButton from "../../components/SubmitButton";
 import { useInfo } from "../../context/InfoCenter";

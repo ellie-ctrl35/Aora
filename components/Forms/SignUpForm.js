@@ -2,7 +2,7 @@ import { StyleSheet, Text, View,Pressable,TextInput } from 'react-native'
 import {useState} from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import SubmitButton from '../SubmitButton';
-import { useNavigation } from '@react-navigation/native';
+import useNavigateToScreen from '../../hooks/useNavigateToScreen';
 import { useInfo } from '../../context/InfoCenter';
 
 const SignUpForm = () => {
@@ -12,25 +12,8 @@ const SignUpForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
-
     setPasswordVisible(!passwordVisible);
-
   };
-
-  const navigation = useNavigation();
-
-  const navToRegister = () => {
-
-    navigation.navigate('Login');
-
-  };
-
-  const signUserUp = () => {
-
-    signUp(email,password);
-
-  }
-
   return (
     <View style={styles.form}>
       <Text style={styles.Headertxt}>Sign up</Text>
@@ -52,8 +35,8 @@ const SignUpForm = () => {
         </Pressable>
       </View>
       <Text style={styles.ForgotTxt}>Forgot Password</Text>
-      <SubmitButton onPress={signUserUp} text="Sign up" width="100%" height="10%" />
-      <Pressable onPress={navToRegister} style={styles.switchLink}>
+      <SubmitButton onPress={signUp(email,password)} text="Sign up" width="100%" height="10%" />
+      <Pressable onPress={()=>useNavigateToScreen('Login')} style={styles.switchLink}>
         <Text style={styles.txt1}>Already have an account?</Text>
         <Text style={styles.txt2}>Login</Text>
       </Pressable>
@@ -72,7 +55,7 @@ const styles = StyleSheet.create({
   },
   Headertxt: {
     color: "#fff",
-    fontSize: "1.3rem",
+    fontSize: 18,
     fontWeight: 500,
     marginLeft: "2%"
   },
@@ -80,7 +63,7 @@ const styles = StyleSheet.create({
     marginTop: "6%",
     marginLeft: "2%",
     color: "#CDCDE0",
-    fontSize: "1rem",
+    fontSize: 15,
     fontWeight: 300
   },
   emailInput: {
@@ -90,9 +73,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: "2%",
     alignSelf: "center",
-    outline: "#FF8C00",
     color: "#fff",
-    fontSize: "1.1rem",
+    fontSize: 15,
     paddingLeft: "2%"
   },
   passBox: {
@@ -105,19 +87,18 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: "2%",
     alignSelf: "center",
-    outline: "#FF8C00",
   },
   passInput: {
     width: "85%",
     height: "100%",
     color: "#fff",
-    fontSize: "1.1rem",
+    fontSize: 15,
     paddingLeft: "2%",
   },
   ForgotTxt: {
     marginTop: "3%",
     color: "#CDCDE0",
-    fontSize: "1rem",
+    fontSize: 15,
     fontWeight: 300,
     alignSelf: "flex-end",
     marginRight: "2%"

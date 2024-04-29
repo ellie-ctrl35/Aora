@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import SubmitButton from '../SubmitButton';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigateToScreen } from '../../hooks/useNavigateToScreen';
 import { useInfo } from '../../context/InfoCenter';
 
 
@@ -11,18 +11,11 @@ const SignInForm = () => {
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { signIn } = useInfo(); 
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  const navigation = useNavigation();
 
-  const navToRegister = () => {
-    navigation.navigate('SignUpScreen');
-  };
-
-  const handleSignIn = () => {
-    signIn(email, password); // Call the signIn function with email and password
-  }; 
   return (
     <View style={styles.form}>
       <Text style={styles.Headertxt}>Sign in</Text>
@@ -42,8 +35,8 @@ const SignInForm = () => {
         </Pressable>
       </View>
       <Text style={styles.ForgotTxt}>Forgot Password</Text>
-      <SubmitButton onPress={handleSignIn} text="Log in" width="100%" height="13%" />
-      <Pressable onPress={navToRegister} style={styles.switchLink}>
+      <SubmitButton onPress={()=>signIn(email,password)} text="Log in" width="100%" height="13%" />
+      <Pressable onPress={()=>useNavigateToScreen('SignUpScreen')} style={styles.switchLink}>
         <Text style={styles.txt1}>Don't have an account?</Text>
         <Text style={styles.txt2}>Signup</Text>
       </Pressable>
