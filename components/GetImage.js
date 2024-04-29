@@ -5,8 +5,7 @@ import UploadImg from '../resources/UploadImg.png'
 const GetImage = ({ onPress }) => {
     return (
         <Pressable onPress={onPress} style={styles.container}>
-          <Image style={styles.img} source={UploadImg} resizeMode="contain"/>
-        
+          {<Image style={styles.img} source={UploadImg} resizeMode="contain"/>}
         </Pressable>
       );
 };

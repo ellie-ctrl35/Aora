@@ -48,8 +48,6 @@ const Create = () => {
     }
   };
   
-  
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.head}>Upload Video</Text>
