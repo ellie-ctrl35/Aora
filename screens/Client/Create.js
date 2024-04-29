@@ -33,10 +33,6 @@ const Create = () => {
     }
   };
 
-  const handleSubmit = () => {
-    createPost(title, prompt, videoURL, imgUrl);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.head}>Upload Video</Text>
@@ -57,7 +53,7 @@ const Create = () => {
         style={styles.vidTitle}
       />
       <SubmitButton
-        onPress={handleSubmit}
+        onPress={()=>createPost(title, prompt, videoURL, imgUrl)}
         text={loading ? "Submitting..." : "Submit & Publish"}
         width="90%"
         height="8%"
