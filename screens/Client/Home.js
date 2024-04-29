@@ -11,7 +11,7 @@ const Home = () => {
         </Text>
       </View>
       <View style={styles.searchBox}>
-        <TextInput style={styles.searchInput} textContentType="text" placeholder="Search for a video topic"/>
+        <TextInput style={styles.searchInput} placeholder="Search for a video topic"/>
       </View>
     </SafeAreaView>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   searchBox:{
     width:"90%",
-    height:"7%",
+    height:"9%",
     backgroundColor:"#1E1E2D",
     marginTop:"4%",
     borderRadius:8

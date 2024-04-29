@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
         color:"#fff",
         fontSize:18,
         fontWeight:400,
-        marginTop:"1%"
+        marginTop:"3%",
+        width:300,
+        textAlign:"center",
     },
     numbers:{
         width:"70%",
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     number:{
         color:"white",
         fontSize:25,
-        fontWeight:"700"
+        fontWeight:700
     },
     title:{
         color:"white",

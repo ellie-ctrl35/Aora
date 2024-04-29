@@ -42,7 +42,7 @@ const SignInForm = () => {
         </Pressable>
       </View>
       <Text style={styles.ForgotTxt}>Forgot Password</Text>
-      <SubmitButton onPress={handleSignIn} text="Log in" width="100%" height="10%" />
+      <SubmitButton onPress={handleSignIn} text="Log in" width="100%" height="13%" />
       <Pressable onPress={navToRegister} style={styles.switchLink}>
         <Text style={styles.txt1}>Don't have an account?</Text>
         <Text style={styles.txt2}>Signup</Text>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   Headertxt: {
     color: "#fff",
-    fontSize: "1.3rem",
+    fontSize: 19,
     fontWeight: 500,
     marginLeft: "2%"
   },
@@ -70,19 +70,18 @@ const styles = StyleSheet.create({
     marginTop: "6%",
     marginLeft: "2%",
     color: "#CDCDE0",
-    fontSize: "1rem",
+    fontSize: 15,
     fontWeight: 300
   },
   emailInput: {
     backgroundColor: "#1E1E2D",
     width: "96%",
-    height: "10%",
+    height: "13%",
     borderRadius: 8,
     marginTop: "2%",
     alignSelf: "center",
-    outline: "#FF8C00",
     color: "#fff",
-    fontSize: "1.1rem",
+    fontSize: 15,
     paddingLeft: "2%"
   },
   passBox: {
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#1E1E2D",
     width: "96%",
-    height: "10%",
+    height: "13%",
     borderRadius: 8,
     marginTop: "2%",
     alignSelf: "center",
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     width: "85%",
     height: "100%",
     color: "#fff",
-    fontSize: "1.1rem",
+    fontSize: 15,
     paddingLeft: "2%",
   },
   ForgotTxt: {

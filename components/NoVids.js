@@ -16,7 +16,7 @@ const NoVids = () => {
         onPress={navToHome}
         text="Back to Explore"
         width="100%"
-        height="15%"
+        height="18%"
       />
     </View>
   );

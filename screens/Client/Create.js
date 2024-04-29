@@ -60,7 +60,7 @@ const Create = () => {
         onPress={handleSubmit}
         text={loading ? "Submitting..." : "Submit & Publish"}
         width="90%"
-        height={60}
+        height="8%"
       />
     </SafeAreaView>
   );
