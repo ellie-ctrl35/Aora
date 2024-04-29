@@ -1,22 +1,19 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
-import { useState, useEffect } from "react";
+import { SafeAreaView, StyleSheet, Text, TextInput } from "react-native";
+import { useState } from "react";
 import GetVideo from "../../components/GetVideo";
 import GetImage from "../../components/GetImage";
 import { launchImageLibraryAsync } from "expo-image-picker";
 import SubmitButton from "../../components/SubmitButton";
-import { db,collection,addDoc } from "../../Config/FireBase";
-import {useInfo} from '../../context/InfoCenter'
+import { useInfo } from "../../context/InfoCenter";
+import useCreatePost from "../../hooks/useCreatePost";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [prompt, setPrompt] = useState("");
   const [videoURL, setVideoUrl] = useState();
   const [imgUrl, setImgUrl] = useState();
-  const {user}=useInfo()
-
-  useEffect(()=>{
-   console.log(user)
-  },[])
+  const { user } = useInfo();
+  const { loading, createPost } = useCreatePost();
 
   const handleVideo = async () => {
     const videoPickerResult = await launchImageLibraryAsync({
@@ -36,18 +33,10 @@ const Create = () => {
     }
   };
 
-  const sendPost = async () => {
-    try {
-      await addDoc(collection(db, "posts"), {
-        title,
-        prompt,
-      });
-      console.log("Post added successfully!");
-    } catch (error) {
-      console.error("Error adding post: ", error);
-    }
+  const handleSubmit = () => {
+    createPost(title, prompt, videoURL, imgUrl);
   };
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.head}>Upload Video</Text>
@@ -58,9 +47,9 @@ const Create = () => {
         style={styles.vidTitle}
       />
       <Text style={styles.label}>Upload Video</Text>
-      <GetVideo onPress={handleVideo} videoURL={videoURL}/>
+      <GetVideo onPress={handleVideo} videoURL={videoURL} />
       <Text style={styles.label}>Thumbnail Image</Text>
-      <GetImage onPress={handleThumbnail} imgUrl={imgUrl}/>
+      <GetImage onPress={handleThumbnail} imgUrl={imgUrl} />
       <Text style={styles.label}>AI Prompt</Text>
       <TextInput
         onChangeText={(text) => setPrompt(text)}
@@ -68,8 +57,8 @@ const Create = () => {
         style={styles.vidTitle}
       />
       <SubmitButton
-        onPress={sendPost}
-        text="Submit & Publish"
+        onPress={handleSubmit}
+        text={loading ? "Submitting..." : "Submit & Publish"}
         width="90%"
         height={60}
       />
