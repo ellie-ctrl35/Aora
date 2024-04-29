@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View, Pressable,Image } from "react-native";
+import { StyleSheet, Pressable, Image } from "react-native";
 import React from "react";
-import UploadImg from '../resources/UploadImg.png'
 
-const GetVideo = ({onPress}) => {
+const GetVideo = ({ onPress, videoURL }) => {
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Image style={styles.img} source={UploadImg} resizeMode="contain"/>
+      {videoURL ? (
+        <Image style={styles.img} source={{ uri: videoURL }} resizeMode="cover" />
+      ) : (
+        <Text>Select Video</Text>
+      )}
     </Pressable>
   );
 };
@@ -19,11 +22,11 @@ const styles = StyleSheet.create({
     height: "24%",
     borderRadius: 8,
     marginTop: "2%",
-    justifyContent:"center",
-    alignItems:"center"
+    justifyContent: "center",
+    alignItems: "center",
   },
-  img:{
-    width:"35%",
-    height:"35%"
-  }
+  img: {
+    width: "100%",
+    height: "100%",
+  },
 });

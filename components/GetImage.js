@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View, Pressable ,Image} from "react-native";
+import { StyleSheet, Pressable, Image } from "react-native";
 import React from "react";
-import UploadImg from '../resources/UploadImg.png'
 
-const GetImage = ({ onPress }) => {
-    return (
-        <Pressable onPress={onPress} style={styles.container}>
-          {<Image style={styles.img} source={UploadImg} resizeMode="contain"/>}
-        </Pressable>
-      );
+const GetImage = ({ onPress, imgUrl }) => {
+  return (
+    <Pressable onPress={onPress} style={styles.container}>
+      {imgUrl ? (
+        <Image style={styles.img} source={{ uri: imgUrl }} resizeMode="cover" />
+      ) : (
+        <Text>Select Image</Text>
+      )}
+    </Pressable>
+  );
 };
 
 export default GetImage;
@@ -22,11 +25,10 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection:"row"
+    flexDirection: "row",
   },
-  img:{
-    width:"45%",
-    height:"55%"
+  img: {
+    width: "45%",
+    height: "55%",
   },
-  
 });

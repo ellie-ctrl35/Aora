@@ -58,9 +58,9 @@ const Create = () => {
         style={styles.vidTitle}
       />
       <Text style={styles.label}>Upload Video</Text>
-      <GetVideo onPress={handleVideo} />
+      <GetVideo onPress={handleVideo} videoURL={videoURL}/>
       <Text style={styles.label}>Thumbnail Image</Text>
-      <GetImage onPress={handleThumbnail} />
+      <GetImage onPress={handleThumbnail} imgUrl={imgUrl}/>
       <Text style={styles.label}>AI Prompt</Text>
       <TextInput
         onChangeText={(text) => setPrompt(text)}
