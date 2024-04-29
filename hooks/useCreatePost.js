@@ -1,7 +1,6 @@
-// useCreatePost.js
 import { useState } from "react";
-import { collection, addDoc } from "../../Config/FireBase";
-import { storage } from "../../Config/FireBase";
+import { collection, addDoc, storage } from "../Config/FireBase";
+
 
 const useCreatePost = () => {
   const [loading, setLoading] = useState(false);
@@ -11,12 +10,12 @@ const useCreatePost = () => {
 
     try {
       // Upload video to Firebase Storage
-      const videoRef = storage.ref().child(`videos/${Date.now()}`);
+      const videoRef = storage().ref().child(`videos/${Date.now()}`);
       await videoRef.putFile(videoURL);
       const videoDownloadURL = await videoRef.getDownloadURL();
 
       // Upload image to Firebase Storage
-      const imgRef = storage.ref().child(`images/${Date.now()}`);
+      const imgRef = storage().ref().child(`images/${Date.now()}`);
       await imgRef.putFile(imgUrl);
       const imgDownloadURL = await imgRef.getDownloadURL();
 
