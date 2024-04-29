@@ -1,11 +1,19 @@
 import { StyleSheet, Pressable, Image } from "react-native";
-import React from "react";
+import {useEffect,useEffect} from "react";
 
 const GetVideo = ({ onPress, videoURL }) => {
+  const [previewURL, setPreviewURL] = useState(null);
+
+  useEffect(() => {
+    if (videoURL) {
+      setPreviewURL(videoURL);
+    }
+  }, [videoURL]);
+
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      {videoURL ? (
-        <Image style={styles.img} source={{ uri: videoURL }} resizeMode="cover" />
+      {previewURL ? (
+        <Image style={styles.img} source={{ uri: previewURL }} resizeMode="cover" />
       ) : (
         <Text>Select Video</Text>
       )}
