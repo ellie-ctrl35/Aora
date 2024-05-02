@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Pressable,Image } from "react-native";
 import React from "react";
-import UploadImg from '../resources/UploadImg.png'
+import UploadImg from '../../resources/UploadImg.png'
 
 const GetVideo = ({onPress}) => {
   return (
